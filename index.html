@@ -5,11 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <title>Sketchpad!</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="title"><h1>Sketchpad!</h1></div>
+        <div class="mode"><h3>Mode: ✅</h3></div>
+        <div class="board"></div>
+        <div class="buttons">
+            <button class="black-btn btn" onclick="changeColor('black')">Black</button>
+            <button class="grey-btn btn" onclick="changeColor('grey')">Grey</button>
+            <button class="red-btn btn" onclick="changeColor('red')">Red</button>
+            <button class="random-btn btn" onclick="changeColor('random')">Random</button>
+            <button class="eraser-btn btn" onclick="changeColor('cyan')">Eraser</button>
+            <button class="reset-btn btn" onclick="resetBoard()">Reset</button>
+            <br><input type="text" placeholder="Set size" value="16" onchange="changeSize(this.value)">
+            <input type="submit" value="Set size">
+        </div>
+        <div class="error">Input not valid, set a number between 6 and 100!</div>
+    </div>
 </body>
 </html>
