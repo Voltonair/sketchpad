@@ -16,15 +16,16 @@
         <div class="board"></div>
         <div class="buttons">
             <button class="black-btn btn" onclick="changeColor('black')">Black</button>
-            <button class="grey-btn btn" onclick="changeColor('grey')">Grey</button>
-            <button class="red-btn btn" onclick="changeColor('red')">Red</button>
-            <button class="random-btn btn" onclick="changeColor('random')">Random</button>
-            <button class="eraser-btn btn" onclick="changeColor('cyan')">Eraser</button>
+            <button class="grey-btn btn" onclick="getColorChoice('grey')">Grey</button>
+            <button class="red-btn btn" onclick="getColorChoice('red')">Red</button>
+            <button class="random-btn btn" onclick="getColorChoice('random')">Random</button>
+            <button class="eraser-btn btn" onclick="getColorChoice('white')">Eraser</button>
             <button class="reset-btn btn" onclick="resetBoard()">Reset</button>
-            <br><input type="text" placeholder="Set size" value="16" onchange="changeSize(this.value)">
-            <input type="submit" value="Set size">
+            <br>
+            <button class="16px" onclick="changeSizeOne()">16 x 16</button>
+            <button class="32px" onclick="changeSizeTwo()">32 x 32</button>
+            <button class="64px" onclick="changeSizeThree()">64 x 64</button>
         </div>
-        <div class="error">Input not valid, set a number between 6 and 100!</div>
     </div>
 </body>
 </html>
