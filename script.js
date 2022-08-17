@@ -1,3 +1,4 @@
+// Global variables
 color = 'black';
 let click = true;
 
