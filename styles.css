@@ -1,5 +1,88 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .board {
     display: grid;
     width: 500px;
     height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
+    
+}
+
+.title {
+    font-size: 20px;
+    font-style: italic;
+    letter-spacing: 5px;
+    color: rebeccapurple
+}
+
+.mode {
+    font-size: 12px;
+    letter-spacing: 5px;
+    font-style: italic;
+    margin-bottom: 1em;
+}
+
+.btn {
+    padding: 0.4em 0.7em 0.4em 0.7em;
+    border-radius: 15px;
+    border: none;
+    margin: 1em 0 1em 0;
+    cursor: pointer;
+}
+
+.round {
+    padding: 2.2em 1.4em 2.2em 1.4em;
+    border-radius: 50%;
+    border: none;
+    margin: 0 0.3em 1em 0.3em;
+    cursor: pointer;
+    background: linear-gradient(357deg, #256385, #63a6e3);
+    color: white;
+    font-weight: bold;
+}
+
+.round:hover {
+    opacity: calc(80%);
+    transition: ease;
+}
+
+.black-btn {
+    background-color: #000000; 
+    color: rgb(255, 255, 255);
+}
+
+.red-btn {
+    background-color: #f05b51;
+    color: white;
+}
+
+.grey-btn {
+    background-color: #7c7b7b; 
+    color: rgb(255, 255, 255);
+}
+
+.random-btn {
+    background: linear-gradient(238deg, #ac5499, #2bc8b1);
+    color: white;
+}
+
+.eraser-btn {
+    margin-left: 3em;
+    background-color: antiquewhite;
+    color:#555353;
+    border: 1px solid #000;
+}
+
+.reset-btn {
+    background-color: antiquewhite;
+    color:#555353;
+    border: 1px solid #000;
+}
+
+.btn:hover {
+    opacity: calc(70%);
 }
