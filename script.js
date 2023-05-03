@@ -1,66 +1,92 @@
-// Global variables
-color = 'black';
+let color = 'black';
+let buttons = document.querySelectorAll('[data-color]')
+let clearButton = document.querySelector('.clear');
+let sizeButton = document.querySelector('.get-size');
+let checkRemoveBoard = false;
 let click = true;
 
-// Function create and draw on board
-function populatedBoard (col, rows) {
+function getBoard(cols, rows) {
     let board = document.querySelector('.board');
-    
-    board.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
-    board.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-    
-    for (let i = 0; i < col * rows; i++) {
-        let square = document.createElement('div');
-        square.className = 'sq';
-        square.addEventListener('mouseover', getColor);
-        board.insertAdjacentElement('beforeend', square);
+
+    if (checkRemoveBoard) {
+        removeBoard();
     }
-}
 
-populatedBoard(16, 16);
+    board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
 
-// Function colors
-function getColor () {
-    if (click) {
-        if (color === 'random') {
-            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-        } else {
-            this.style.backgroundColor = color;
+    let size = cols * rows;
+    for (let i = 0; i < size; i++) {
+        let fill = document.createElement('div');
+        fill.className = 'sq';
+        fill.addEventListener('mouseover', paintBoard);
+        board.insertAdjacentElement('beforeend', fill);
+    }
+
+    board.addEventListener('click', getClick);
+
+    function removeBoard() {
+        while(board.lastChild) {
+            board.removeChild(board.lastChild);
         }
     }
+    
 }
 
-function getColorChoice (choice) {
-    color = choice;
+function paintBoard() {
+    if (click) {
+        let randomColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.style.backgroundColor = color;
+        if (color === 'red') this.style.backgroundColor = color;
+        if (color === 'blue') this.style.backgroundColor = color;
+        if (color === 'random') this.style.backgroundColor = randomColor;
+    }
 }
 
-// Function sizes
-function changeSizeOne () {
-    populatedBoard(16, 16);
+function clearBoard() {
+    let clearDivs = document.querySelectorAll('.sq');
+    clearDivs.forEach((div) => div.style.backgroundColor = 'rgb(235, 135, 99)');
 }
 
-function changeSizeTwo () {
-    populatedBoard(32, 32);
+function changeSize() {
+    let errorMsg = document.querySelector('.error-message');
+    let input = prompt('Choose a size!');
+    input = parseFloat(input);
+    if (input <= 3 || input > 64 || input !== Number(input)) {
+        checkRemoveBoard = false;
+        errorMsg.textContent = 'Please, insert a number bewteen 4 and 64';
+    } else {
+        checkRemoveBoard = true;
+        errorMsg.textContent = '';
+        return input;
+    }
 }
 
-function changeSizeThree () {
-    populatedBoard(64, 64);
-}
-
-// Function to reset the board
-function resetBoard() {
-  let squares = document.querySelectorAll('.sq');
-  squares.forEach((square) => square.style.backgroundColor = 'white');
-}
-
-// Get body and swap 'click' to true / false
-document.querySelector('body').addEventListener('click', (e) => {
-    if (e.target.tagName != 'BUTTON') {
+function getClick() {
+    let clickMessage = document.querySelector('.click-message-on');
+    let clickMessageOff = document.querySelector('.click-message-off');
     click = !click;
     if (click) {
-        document.querySelector('.mode').textContent = 'Mode: ✅';
-    } else {
-        document.querySelector('.mode').textContent = 'Mode: 🚫';
+        clickMessageOff.textContent = '';
+        clickMessage.textContent = `Click enabled, you can paint! ✔️`;
+    } else if (!click) {
+        clickMessage.textContent = '';
+        clickMessageOff.textContent = `Click disabled, you can\'t paint! ❌`;
     }
-    }
+}
+
+buttons.forEach((button) => {
+    button.addEventListener('click', function() {
+        let colorSelection = button.dataset.color;
+        color = colorSelection;
+    })
 })
+
+clearButton.addEventListener('click', clearBoard);
+
+sizeButton.addEventListener('click', function() {
+    let size = changeSize();
+    getBoard(size, size);
+});
+
+getBoard(32, 32);

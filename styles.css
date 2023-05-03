@@ -1,89 +1,57 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100vh;
+}
+
+.container-size {
+    display: flex;
 }
 
 .board {
     display: grid;
-    width: 40%;
-    height: 100vh;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid orangered;
+    margin-bottom: 2em;
+    background: rgb(235, 135, 99);
 }
 
-.title {
-    font-size: 20px;
-    font-style: italic;
-    letter-spacing: 5px;
-    color: #256385;
+.sq {
+    border: thin solid rgb(230, 102, 55);
 }
 
-.mode {
-    font-size: 12px;
-    letter-spacing: 5px;
-    font-style: italic;
+.space {
+    margin-left: 3em;
+}
+
+.get-size {
     margin-bottom: 1em;
 }
 
-.btn {
-    padding: 0.4em 0.7em 0.4em 0.7em;
-    border-radius: 15px;
-    border: none;
-    margin: 1em 0 1em 0;
-    cursor: pointer;
-}
-
-.round {
-    padding: 2.2em 1.4em 2.2em 1.4em;
-    border-radius: 50%;
-    border: none;
-    margin: 0 0.3em 1em 0.3em;
-    cursor: pointer;
-    background: linear-gradient(357deg, #256385, #63a6e3);
-    color: white;
+.click-message-on, .click-message-off {
+    color: green;
+    font-size: 20px;
     font-weight: bold;
+    font-style: italic;
 }
 
-.round:hover {
-    opacity: calc(80%);
-    transition: ease;
+.click-message-off {
+    color: red
 }
 
-.black-btn {
-    background-color: #000000; 
-    color: rgb(255, 255, 255);
-}
-
-.red-btn {
-    background-color: #f05b51;
-    color: white;
-}
-
-.grey-btn {
-    background-color: #7c7b7b; 
-    color: rgb(255, 255, 255);
-}
-
-.random-btn {
-    background: linear-gradient(238deg, #ac5499, #2bc8b1);
-    color: white;
-}
-
-.eraser-btn {
-    margin-left: 3em;
-    background-color: antiquewhite;
-    color:#555353;
-    border: 1px solid #000;
-}
-
-.reset-btn {
-    background-color: antiquewhite;
-    color:#555353;
-    border: 1px solid #000;
-}
-
-.btn:hover {
-    opacity: calc(70%);
+.error-message {
+    margin-top: 2em;
+    margin-bottom: 0.2em;
+    font-size: 18px;
+    font-style: italic;
+    color: brown;
 }
